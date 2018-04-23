@@ -1,0 +1,69 @@
+{#templates/org-detail-homepage.html#}
+
+{% extends 'org_base.html' %}
+
+<title>{% block title %}机构首页--新东方{% endblock %}</title>
+{% block page_path %}机构首页{% endblock %}
+
+ {% block right_form %}
+    <div class="right companycenter layout grouping" >
+            <div class="head">
+                <h1>全部课程</h1>
+                <a class="green fr more" href="org-detail-course.html">查看更多  >  </a>
+            </div>
+            <div class="brief group_list">
+                    {% for course in all_courses %}
+                     <div class="module1_5 box">
+                        <a href="{% url 'course:course_detail' course.id %}"><img width="214" src="{{ MEDIA_URL }}{{ course.image }}"/></a>
+                        <div class="des">
+                            <a href="{% url 'course:course_detail' course.id %}"><h2>{{ course.name }}</h2></a>
+                            <span class="fl">课时：<i class="key">{{ course.learn_times }}</i></span>
+                            <span class="fr">参加人数：{{ course.students }}</span>
+                        </div>
+                        <div class="bottom">
+                            <span class="fl">{{ course.course_org.name }}</span>
+                             <span class="star fr  notlogin
+                                " data-favid="13"  data-fav-type="4">
+                                {{ course.fav_nums }}
+                            </span>
+                        </div>
+                    </div>
+                    {% endfor %}
+            </div>
+        </div>
+    <div class="right companycenter layout" >
+        <div class="head">
+            <h1>机构教师</h1>
+            <a class="green fr more" href="org-detail-teachers.html">查看更多  >  </a>
+        </div>
+        {% for teacher in all_teacher %}
+        <div class="diarys">
+            <div class="module5 share company-diary-box" style="padding:10px 0;">
+                <div class="left">
+                      <p><a href="{% url 'org:teacher_detail' teacher.id %}"><img class="pic" src="{{ MEDIA_URL }}{{ teacher.image }}"/></a></p>
+                      <p><a href="{% url 'org:teacher_detail' teacher.id %}">昵称:{{ teacher.name }}</a></p>
+                </div>
+                <div class="right">
+                    <div class="top">
+                        <div class="fl">
+                            <a href=""><h1>Java教程</h1></a>
+                            <span>发表于：2018-04-22</span>
+                        </div>
+                    </div>
+                    <div class="middle" style="border-bottom:0;">课程介绍</div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="right companycenter layout" >
+    <div class="head">
+        <h1>机构介绍</h1>
+        <a class="green fr more" href="org-detail-desc.html">查看更多  >  </a>
+    </div>
+    <div class="cont">&nbsp; &nbsp; <p>{{ course_org.desc }}</p><h1 class="ue_t" label="Title center" name="tc" style="border-bottom-color:#cccccc;border-bottom-width:2px;border-bottom-style:solid;padding:0px 4px 0px 0px;text-align:center;margin:0px 0px 20px;"><span style="color:#c0504d;">
+{#        [键入文档标题]</span></h1><p style="text-align:center;"><strong class="ue_t">[键入文档副标题]</strong></p><h3><span class="ue_t" style="font-family:幼圆">[标题 1]</span></h3><p class="ue_t" style="text-indent:2em;">对于“插入”选项卡上的库，在设计时都充分考虑了其中的项与文档整体外观的协调性。 您可以使用这些库来插入表格、页眉、页脚、列表、封面以及其他文档构建基块。 您创建的图片、图表或关系图也将与当前的文档外观协调一致。</p><p class="ue_t" style="text-indent:2em;"><img src="../media/courses/ueditor/57aa86a0000145c512000460_20161210234050_865.jpg" title="" alt="57aa86a0000145c512000460.jpg"/> </p><h3><span class="ue_t" style="font-family:幼圆">[标题 2]</span></h3><p><img src="http://api.map.baidu.com/staticimage?center=116.410899,39.863624&zoom=11&width=530&height=340&markers=116.404,39.915" width="530" height="340"/> </p><p class="ue_t" style="text-indent:2em;">在“开始”选项卡上，通过从快速样式库中为所选文本选择一种外观，您可以方便地更改文档中所选文本的格式。 您还可以使用“开始”选项卡上的其他控件来直接设置文本格式。大多数控件都允许您选择是使用当前主题外观，还是使用某种直接指定的格式。</p><h3><span class="ue_t" style="font-family:幼圆">[标题 3]</span></h3><p>2016-12-10</p><p class="ue_t">对于“插入”选项卡上的库，在设计时都充分考虑了其中的项与文档整体外观的协调性。 您可以使用这些库来插入表格、页眉、页脚、列表、封面以及其他文档构建基块。 您创建的图片、图表或关系图也将与当前的文档外观协调一致。</p><p class="ue_t"><br/> </p><p><br/></p><p><br/></p><a href="/company/desc/22/"><span class="green">[查看更多]</span></a></div>#}
+    </div>
+ {% endblock %}
