@@ -14,7 +14,7 @@ jdcal==1.3
 mysqlclient==1.3.12
 odfpy==1.3.6
 openpyxl==2.4.9
-Pillow==5.0.0
+Pillow==8.3.2
 pytz==2017.3
 PyYAML==3.12
 six==1.11.0
